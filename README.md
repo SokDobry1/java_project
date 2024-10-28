@@ -1,3 +1,6 @@
+#java_project
+
+```mermaid
 classDiagram
     class User {
         -Long id
