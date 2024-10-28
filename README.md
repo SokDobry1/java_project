@@ -24,7 +24,6 @@ classDiagram
         -Date purchaseDate
         +book()
         +cancel()
-        +generatePDF()
     }
 
     class Train {
@@ -44,7 +43,6 @@ classDiagram
         -String name
         -String city
         -String address
-        -GeoCoordinates location
         +getSchedule()
     }
 
@@ -62,7 +60,6 @@ classDiagram
         -Long id
         -Ticket ticket
         -Double amount
-        -PaymentStatus status
         -PaymentMethod method
         -DateTime timestamp
         +process()
