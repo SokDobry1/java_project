@@ -17,13 +17,15 @@ classDiagram
         -Long id
         -User passenger
         -Seat seat
-        -String passengerName
+        -Station departureStation
+        -Station arrivalStation
+        -List~Station~ routeStations
         -TicketStatus status
         -Double price
         -Date purchaseDate
+        +calculatePrice()
         +book()
         +cancel()
-        +getDetails()
     }
 
     class Train {
@@ -74,15 +76,21 @@ classDiagram
 
     class Route {
         -Long id
-        -Double distance
-        +calculatePrice()
+        -String name
         +getStops()
     }
 
     class RouteStation {
         -Route route
         -Station station
+        -Train train
         -Integer sequenceNumber
+    }
+
+    class StationDistance {
+        -Station stationFrom
+        -Station stationTo
+        -Double distance
     }
 
     User "1" -- "0..*" Ticket
@@ -93,4 +101,6 @@ classDiagram
     RouteStation "1" -- "1" Station
     Wagon "1" -- "1..*" Seat
     Ticket "1" -- "1" Payment
+    StationDistance "1" -- "1" Station : stationFrom
+    StationDistance "1" -- "1" Station : stationTo
 
