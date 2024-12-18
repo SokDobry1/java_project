@@ -47,7 +47,6 @@ classDiagram
     }
 
     class RouteStation {
-        -Train train
         -Long routeId
         -Station station
         -Integer sequenceNumber
@@ -98,3 +97,4 @@ classDiagram
     RouteStation "1" -- "1" Station : station
     StationDistance "1" -- "1" Station : stationFrom
     StationDistance "1" -- "1" Station : stationTo
+
