@@ -16,9 +16,8 @@ classDiagram
 
     class Ticket {
         -Long id
-        -Train train
         -User passenger
-        -String seatNumber
+        -Seat seat
         -TicketStatus status
         -Double price
         -Date purchaseDate
@@ -29,11 +28,9 @@ classDiagram
     class Train {
         -Long id
         -String trainNumber
-        -Station departureStation
-        -Station arrivalStation
+        -Route route
         -DateTime departureTime
         -DateTime arrivalTime
-        -List~Wagon~ wagons
         +getAvailableSeats()
         +updateSchedule()
     }
@@ -50,10 +47,16 @@ classDiagram
         -Long id
         -WagonType type
         -Integer capacity
-        -List~Seat~ seats
         -Integer wagonNumber
         +getAvailableSeats()
         +updateStatus()
+    }
+
+    class Seat {
+        -Long id
+        -Wagon wagon
+        -String seatNumber
+        -SeatStatus status
     }
 
     class Payment {
@@ -71,14 +74,14 @@ classDiagram
         -Long id
         -List~Station~ stations
         -Double distance
-        -Integer duration
         +calculatePrice()
         +getStops()
     }
 
     User "1" -- "0..*" Ticket
-    Ticket "0..*" -- "1" Train
+    Ticket "1" -- "1" Seat
     Train "1" -- "1..*" Wagon
     Train "1" -- "1" Route
     Route "1" -- "2..*" Station
+    Wagon "1" -- "1..*" Seat
     Ticket "1" -- "1" Payment
