@@ -47,9 +47,14 @@ classDiagram
         -Long id
         -WagonType type
         -Integer capacity
-        -Integer wagonNumber
         +getAvailableSeats()
         +updateStatus()
+    }
+
+    class TrainWagon {
+        -Train train
+        -Wagon wagon
+        -Integer wagonNumber
     }
 
     class Seat {
@@ -72,16 +77,24 @@ classDiagram
 
     class Route {
         -Long id
-        -List~Station~ stations
         -Double distance
         +calculatePrice()
         +getStops()
     }
 
+    class RouteStation {
+        -Route route
+        -Station station
+        -Integer sequenceNumber
+    }
+
     User "1" -- "0..*" Ticket
     Ticket "1" -- "1" Seat
-    Train "1" -- "1..*" Wagon
+    Train "1" -- "1..*" TrainWagon
+    TrainWagon "1" -- "1" Wagon
     Train "1" -- "1" Route
-    Route "1" -- "2..*" Station
+    Route "1" -- "2..*" RouteStation
+    RouteStation "1" -- "1" Station
     Wagon "1" -- "1..*" Seat
     Ticket "1" -- "1" Payment
+
