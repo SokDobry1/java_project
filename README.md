@@ -32,8 +32,10 @@ classDiagram
         -String trainNumber
         -DateTime departureTime
         -DateTime arrivalTime
+        -Long routeId
         +getAvailableSeats()
         +getSchedule()
+        +getRoute()
     }
 
     class Station {
