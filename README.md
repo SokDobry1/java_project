@@ -19,13 +19,17 @@ classDiagram
         -Seat seat
         -Station departureStation
         -Station arrivalStation
-        -List~Station~ routeStations
         -TicketStatus status
         -Double price
         -Date purchaseDate
         +calculatePrice()
         +book()
         +cancel()
+    }
+
+    class TicketStation {
+        -Ticket ticket
+        -Station station
     }
 
     class Train {
@@ -83,7 +87,6 @@ classDiagram
     class RouteStation {
         -Route route
         -Station station
-        -Train train
         -Integer sequenceNumber
     }
 
@@ -95,6 +98,8 @@ classDiagram
 
     User "1" -- "0..*" Ticket
     Ticket "1" -- "1" Seat
+    Ticket "1" -- "0..*" TicketStation
+    TicketStation "1" -- "1" Station
     Train "1" -- "0..*" Wagon
     Train "1" -- "1" Route
     Route "1" -- "2..*" RouteStation
@@ -103,4 +108,5 @@ classDiagram
     Ticket "1" -- "1" Payment
     StationDistance "1" -- "1" Station : stationFrom
     StationDistance "1" -- "1" Station : stationTo
+
 
