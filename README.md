@@ -47,8 +47,8 @@ classDiagram
     }
 
     class RouteStation {
-        -Long trainId
-        -Route route
+        -Train train
+        -Long routeId
         -Station station
         -Integer sequenceNumber
     }
@@ -71,7 +71,7 @@ classDiagram
     class Seat {
         -Long id
         -Wagon wagon
-        -String seatNumber
+        -Integer seatNumber
         -SeatStatus status
         -Boolean isAvailable
     }
