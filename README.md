@@ -7,7 +7,6 @@ classDiagram
         -String firstName
         -String lastName
         -String email
-        -String phoneNumber
         -String password
         +register()
         +login()
@@ -18,11 +17,13 @@ classDiagram
         -Long id
         -User passenger
         -Seat seat
+        -String passengerName
         -TicketStatus status
         -Double price
         -Date purchaseDate
         +book()
         +cancel()
+        +getDetails()
     }
 
     class Train {
@@ -32,7 +33,7 @@ classDiagram
         -DateTime departureTime
         -DateTime arrivalTime
         +getAvailableSeats()
-        +updateSchedule()
+        +getSchedule()
     }
 
     class Station {
@@ -45,16 +46,11 @@ classDiagram
 
     class Wagon {
         -Long id
+        -Train train
         -WagonType type
         -Integer capacity
-        +getAvailableSeats()
-        +updateStatus()
-    }
-
-    class TrainWagon {
-        -Train train
-        -Wagon wagon
         -Integer wagonNumber
+        +getAvailableSeats()
     }
 
     class Seat {
@@ -62,6 +58,7 @@ classDiagram
         -Wagon wagon
         -String seatNumber
         -SeatStatus status
+        -Boolean isAvailable
     }
 
     class Payment {
@@ -90,8 +87,7 @@ classDiagram
 
     User "1" -- "0..*" Ticket
     Ticket "1" -- "1" Seat
-    Train "1" -- "1..*" TrainWagon
-    TrainWagon "1" -- "1" Wagon
+    Train "1" -- "0..*" Wagon
     Train "1" -- "1" Route
     Route "1" -- "2..*" RouteStation
     RouteStation "1" -- "1" Station
