@@ -47,6 +47,7 @@ classDiagram
     }
 
     class RouteStation {
+        -Long trainId
         -Route route
         -Station station
         -Integer sequenceNumber
@@ -91,6 +92,7 @@ classDiagram
     Ticket "1" -- "1" RouteStation : departureStation
     Ticket "1" -- "1" RouteStation : arrivalStation
     Train "1" -- "0..*" Wagon
+    Train "1" -- "0..*" RouteStation
     Wagon "1" -- "1..*" Seat
     Ticket "1" -- "1" Payment
     RouteStation "1" -- "1" Station : station
