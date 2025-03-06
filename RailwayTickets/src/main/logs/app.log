@@ -1,0 +1,1 @@
+03-06 03:15:31 ERROR RunApplication - Ошибка при инициализации провайдеров данных: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
